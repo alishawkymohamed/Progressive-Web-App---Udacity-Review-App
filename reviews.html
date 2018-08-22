@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+
+    <head>
+        <meta charset="utf-8" />
+        <link rel="icon" sizes="32x32" href="img/static/icon.png">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>Restauant Reviews</title>
+        <link rel="stylesheet" type="text/css" media="screen" href="css/styles.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <link rel="manifest" href="manifest.json">
+        <meta name="mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="application-name" content="Restaurants">
+        <meta name="apple-mobile-web-app-title" content="Restaurants">
+        <meta name="theme-color" content="#3367D6">
+        <meta name="msapplication-navbutton-color" content="#3367D6">
+        <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+        <meta name="msapplication-starturl" content="/">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <link rel="apple-touch-icon" href="img/static/icon.png">
+    </head>
+
+    <body>
+        <header role="banner">
+            <nav>
+                <h1>
+                    <a href="/" tabindex="-1">Restaurant Reviews</a>
+                </h1>
+            </nav>
+        </header>
+
+        <main>
+            <div class="container" role="form" aria-label="Restaurant Review Form">
+                <div>
+                    <label class="col-3">Choose Restaurant</label>
+                    <select class="col-7 " tabindex="1" role="listbox" id="restaurant_id" aria-label="Choose Restauant">
+                        <option role="option" value="0" selected>Select Restaurant</option>
+                    </select>
+                </div>
+                <div>
+                    <label class="col-3">Username</label>
+                    <input class="col-7 " tabindex="2" type="text" placeholder="Username" aria-label="Username" name="username" />
+                </div>
+                <div>
+                    <label class="col-3">Restaurant Rating</label>
+                    <input class="col-7 " tabindex="3" type="number" min="0" max="5" placeholder="Restaurant Rating" aria-label="RestaurantRating"
+                        name="restaurantRating" />
+                </div>
+                <div>
+                    <label class="col-3">Comment</label>
+                    <textarea tabindex="4" class="col-7 " aria-label="Comment" aria-multiline="true"></textarea>
+                </div>
+                <div style="margin-bottom: 16px;">
+                    <button tabindex="5" onclick="formSubmit(event)" name="submit" role="button" class="submitReview" aria-label="Submit Review">Submit Review</button>
+                </div>
+            </div>
+        </main>
+        <div id="snackbar">Some text some message..</div>
+        <footer id="footer" role="contentinfo">
+            Copyright (c) 2017
+            <a href="/" tabindex="-1">
+                <strong>Restaurant Reviews</strong>
+            </a> All Rights Reserved.
+        </footer>
+
+        <script>
+            if ('serviceWorker' in navigator) {
+                window.addEventListener('load', function () {
+                    navigator.serviceWorker.register('service-worker.js').then(function (registration) {
+                        console.log('ServiceWorker registred successfully with scope: ', registration.scope);
+                    }, function (err) {
+                        console.log('ServiceWorker registration failed: ', err);
+                    });
+                });
+            }
+        </script>
+        <script src="js/idb/idb.js"></script>
+        <script src="js/dbhelper.js"></script>
+        <script src="js/reviews.js"></script>
+    </body>
+
+</html>
